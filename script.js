@@ -44,19 +44,38 @@ function JogoIniciado(){
         }
         document.getElementById('palavraOculta').innerHTML = Guardar.join(' ');
     }
-    SepararPalavra();  
+    SepararPalavra(); 
+    
+    palavraOculta = Array(PalavraJogo.length).fill('_')
+    
 }
+
+let acertos = 0;
+let erros = 0;
 
 function TratamentosAcertosErrosLetra(){
     const PalavraJogo = document.getElementById('Palavra').value;
     const advLetra = document.getElementById('advLetra').value;
     const letras = PalavraJogo.split('');
 
+
+
     if (letras.includes(advLetra)) {
-        console.log('testezinho');
+        acertos += 1;
+        for (let i = 0; i < letras.length; i++) {
+             if (letras[i] === advLetra) {
+                palavraOculta[i] = advLetra;
+             }
+        }
+    }
+    else{
+        erros += 1;
+        console.log(erros)
     }
 
-    else{
-        console.log('errado');
+    if (acertos == letras.length) {
+        console.log('acabou o jogo');
     }
+
+    document.getElementById('palavraOculta').innerHTML = palavraOculta.join(' ');
 } 
