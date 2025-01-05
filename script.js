@@ -1,71 +1,62 @@
-function JogoForca(){
-    //declaração das constantes
-    const palavraEscolhida = document.getElementById('palavraEscolhida').value;
-    const dicaPalavra = document.getElementById('dicaPalavra').value;
-    const lblDica = document.getElementById('lblDica');
+function Verificacao()
+{
+    const btnEnviar = document.getElementById('btnEnviar');
     const lblPalavra = document.getElementById('lblPalavra');
-    const dicaAdivinhacao = document.getElementById('dicaAdivinhacao');
-    const palavraAdivinhada = document.getElementById('adivinhaPalavra').value;
-    const letraAdivinhada = document.getElementById('escolherUmaLetra').value;
+    const lblDica = document.getElementById('lblDica');
+    const Palavra = document.getElementById('Palavra');
+    const Dica = document.getElementById('Dica');
+    const btnIniciar = document.getElementById('btnIniciar');
+   
 
-    if (dicaPalavra && palavraEscolhida == null) {
-        alert('digite a palavra e a dica');
+    if (Palavra.value.trim() === '' || Dica.value.trim() === '') {
+        alert('Digite uma palavra e uma dica');
+        btnIniciar.style.display = 'none';
     }
-    else {
-        console.log(dicaPalavra, palavraEscolhida);
-        EsconderInpts();
-        SepararPalavra(palavraEscolhida);
+    else{
+        btnIniciar.style.display = 'inline';
+        btnEnviar.style.display = 'none';
+        lblPalavra.style.display = 'none';
+        lblDica.style.display = 'none';
+        Palavra.style.display = 'none';
+        Dica.style.display = 'none';
     }
 }
 
-function EsconderInpts(){
-    this.palavraEscolhida.style.display = 'none';
-    this.dicaPalavra.style.display = 'none';
-    this.lblDica.style.display = 'none';
-    this.lblPalavra.style.display = 'none';
-}
+function JogoIniciado(){
+    const lblAdvPalav = document.getElementById('lblAdvPalav').style.display = 'inline';
+    const lblAdvLetra = document.getElementById('lblAdvLetra').style.display = 'inline';
+    const advPalavra = document.getElementById('advPalavra').style.display = 'inline';
+    const advLetra = document.getElementById('advLetra').style.display = 'inline';
+    const PalavraJogo = document.getElementById('Palavra').value;
+    const DicaJogo = document.getElementById('Dica').value;
+    const btnIniciar = document.getElementById('btnIniciar').style.display = 'none';
+    const btnAdvPalavra = document.getElementById('btnAdvPalavra').style.display = 'inline';
+    const btnAdvLetra = document.getElementById('btnAdvLetra').style.display = 'inline';
 
-function SepararPalavra(palavraEscolhida){
-    separacaoLetras = palavraEscolhida.split('');
-    console.log(separacaoLetras);
+    const advPalavraValue = advPalavra.value;
+    const advLetraValue = advLetra.value;
     
-    const item = separacaoLetras.length;
-    let guardarAnderlaine = '';
+    function SepararPalavra(){
+        const Letras = PalavraJogo.split('');
+        let Guardar = [];
+        for (let i = 0; i < Letras.length; i++) {
+            Guardar.push('_ ');
+        }
+        document.getElementById('palavraOculta').innerHTML = Guardar.join(' ');
+    }
+    SepararPalavra();  
+}
 
+function TratamentosAcertosErrosLetra(){
+    const PalavraJogo = document.getElementById('Palavra').value;
+    const advLetra = document.getElementById('advLetra').value;
+    const letras = PalavraJogo.split('');
 
-    for (let i = 0; i < item; i++) {
-        guardarAnderlaine += "_ ";
+    if (letras.includes(advLetra)) {
+        console.log('testezinho');
     }
 
-    document.getElementById('Adivinhacao').innerHTML = guardarAnderlaine;
-}
-
-
-function LogicaDoJogo(letraAdivinhada, palavraAdivinhada){
-   let erros = 0;
-   let acertos = 0
-
-   if(letraAdivinhada && palavraAdivinhada == null)
-   {
-    alert('digite uma letra');
-   }
-
-   if (separacaoLetras.includes(letraAdivinhada)) {
-    acertos += 1;
-    console.log('acertos: ', acertos);
-   }
-
-   else {
-    erros += 1;
-    console.log('erros: ', erros)
-   }
-
-   if (erros === 7) {
-    console.log('acabou o jogo')
-    location.reload;
-   }
-}
-
-
-
-
+    else{
+        console.log('errado');
+    }
+} 

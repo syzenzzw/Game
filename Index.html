@@ -6,36 +6,26 @@
     <title>Document</title>
 </head>
 <body>
-    <label id="lblPalavra" for="palavraEscolhida">Digite uma palavra: </label>
-    <input id="palavraEscolhida" type="text" placeholder="digite a palavra aqui">
-
-    <label id="lblDica" for="dicaPalavra">Digite a dica: </label>
-    <input id="dicaPalavra" type="text">
-
-    <button id="btnEnviar" type="button" onclick="JogoForca()">Enviar</button>
-
-    <div id="Forca">
-        <h1 id="dicaAdivinhacao">Dica: </h1>
-        <h3 id="escolhasDasLetras"></h3>
-        <h2 id="Adivinhacao"></h2>
-
-        <label for="adivinhaPalavra">Digite a palavra que você acha que é</label>
-        <input placeholder="Digite aqui" type="text" id="adivinhaPalavra">
-        
-
-        <label for="escolherUmaLetra">Escolha uma letra</label>
-        <input placeholder="Digite aqui" type="text" id="escolherUmaLetra">
-        <button type="button" onclick="LogicaDoJogo()" id="enviarLetra">Enviar</button>
-
-        <div id="bonequinho">
-            <canvas id="canvas" width="1024" height="768">
-
-            </canvas>
+    <h1>Bem vindo ao jogo da forca</h1>
+    <div id="Jogo">
+        <label id="lblPalavra" for="Palavra">Digite uma palavra</label>
+        <input style="display: inline;" type="text" id="Palavra" placeholder="Digite aqui">
+        <label id="lblDica" for="Dica">Digite uma dica</label>
+        <input style="display: inline;" type="text" id="Dica" placeholder="Digite aqui">
+        <button id="btnEnviar" style="display: inline;" type="button" onclick="Verificacao()">Enviar</button>
+        <button type="button" id="btnIniciar" style="display: none" onclick="JogoIniciado()">INICIAR O JOGO</button>
+        <div id="jogoIniciado">
+            <div id="palavraOculta"></div>
+            <br><br>
+            <label id="lblAdvPalav" style="display: none;" for="advPalavra">Tente acertar a palavra: </label>
+            <input style="display: none;" type="text" id="advPalavra" placeholder="Digite aqui">
+            <button id="btnAdvPalavra" style="display: none;" type="button" onclick="TratamentosAcertosErrosPalavra()">Tentar acertar a palavra</button>
+            <br><br>
+            <label id="lblAdvLetra" style="display: none;" for="advLetra">Tente acertar uma letra: </label>
+            <input style="display: none;" type="text" id="advLetra" placeholder="Digite aqui">
+            <button id="btnAdvLetra" style="display: none;" type="button" onclick="TratamentosAcertosErrosLetra()">Tente acertar uma letra</button>
         </div>
     </div>
-
-
-
     <script src="script.js"></script>
 </body>
 </html>
