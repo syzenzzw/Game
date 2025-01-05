@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label id="lblPalavra" for="palavraEscolhida">Digite uma palavra: </label>
+    <input id="palavraEscolhida" type="text" placeholder="digite a palavra aqui">
+
+    <label id="lblDica" for="dicaPalavra">Digite a dica: </label>
+    <input id="dicaPalavra" type="text">
+
+    <button id="btnEnviar" type="button" onclick="JogoForca()">Enviar</button>
+
+    <div id="Forca">
+        <h1 id="dicaAdivinhacao">Dica: </h1>
+        <h3 id="escolhasDasLetras"></h3>
+        <h2 id="Adivinhacao"></h2>
+
+        <label for="adivinhaPalavra">Digite a palavra que você acha que é</label>
+        <input placeholder="Digite aqui" type="text" id="adivinhaPalavra">
+        
+
+        <label for="escolherUmaLetra">Escolha uma letra</label>
+        <input placeholder="Digite aqui" type="text" id="escolherUmaLetra">
+        <button type="button" onclick="LogicaDoJogo()" id="enviarLetra">Enviar</button>
+
+        <div id="bonequinho">
+            <canvas id="canvas" width="1024" height="768">
+
+            </canvas>
+        </div>
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
