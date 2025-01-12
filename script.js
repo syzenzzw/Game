@@ -1,3 +1,4 @@
+
 function Verificacao()
 {
     const btnEnviar = document.getElementById('btnEnviar');
@@ -58,8 +59,6 @@ function TratamentosAcertosErrosLetra(){
     const advLetra = document.getElementById('advLetra').value;
     const letras = PalavraJogo.split('');
 
-
-
     if (letras.includes(advLetra)) {
         acertos += 1;
         for (let i = 0; i < letras.length; i++) {
@@ -75,7 +74,29 @@ function TratamentosAcertosErrosLetra(){
 
     if (acertos == letras.length) {
         console.log('acabou o jogo');
+        setTimeout(function(){
+            window.location.reload();
+        },5000)
     }
 
-    document.getElementById('palavraOculta').innerHTML = palavraOculta.join(' ');
+    if (erros == letras.length - 1) {
+        console.log('acabou o jogo! ')
+        setTimeout(function(){
+            window.location.reload();
+        },5000)
+    }
+
+    document.getElementById('palavraOculta').innerHTML = palavraOculta.join('');
 } 
+
+function TratamentosAcertosErrosPalavra(){
+    const PalavraJogo = document.getElementById('Palavra').value;
+    const AdvPalavra = document.getElementById('advPalavra').value;
+
+    if (AdvPalavra === PalavraJogo) {
+        console.log('acabou o jogo! ');
+        setTimeout(function(){
+            window.location.reload();
+        },5000);
+    }
+}
